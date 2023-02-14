@@ -1,0 +1,138 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.whiteToblack{
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, white 50%, black 50%);
+    transition: 400ms;
+    background-position: -100% 0;
+}
+.blackTowhite{
+    background-size: 200% 100%;
+    background-image: linear-gradient(to left, black 50%, white 50%);
+    transition: 400ms;
+    background-position: 0 0;
+}
+.slide{
+    display: flex;
+}
+.check-b{
+    appearance: none;
+    visibility: hidden;
+    display: none;
+
+}
+.check-black{
+    position: relative;
+    width: 150px;
+    height:70px;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid black;
+    overflow: hidden;
+    transition: ease-in-out 50ms;
+}
+.check-white{
+    position: relative;
+    background-color: transparent;
+   }
+
+.check-b:checked ~ .slide .check-black{
+    background-color: white;
+}
+
+.check-black::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.check-white::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -205px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.check-b:checked ~ .slide .check-black::before{
+    transform:translateX(150px);
+    background-color: black;
+
+   }
+.check-b:checked ~ .slide .check-white::before{
+  /*  transform:translateX(140px);
+    transition-delay: 0.1s;
+    background-color: black;*/
+    animation-name: slide-white;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+}
+.check-black::after{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 0.4s;
+    transform: translateX(150px);
+}
+/*.check-b:checked ~ .slide .check-black::after{
+    animation-name: slide-black;
+    animation-duration: 0.4s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+}*/
+
+@keyframes slide-white {
+    0%{
+        background-color: black;
+       left: -180px;
+    }
+    70%{
+        background-color: black;
+        left: -60px;
+    }
+    80%{
+        background-color: black;
+        left: -80px;
+    }
+    100%{
+        background-color: black;
+        left: -60px;
+    }
+}
+/*
+@keyframes slide-black {
+    0%{
+        left: 0px;
+    }
+    70%{
+        left: -140px;
+    }
+    80%{
+        left: -120px;
+    }
+    100%{
+        left: -140px;
+    }
+}*/
