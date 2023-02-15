@@ -8,13 +8,13 @@
 .whiteToblack{
     background-size: 200% 100%;
     background-image: linear-gradient(to right, white 50%, black 50%);
-    transition: 400ms;
+    transition: 500ms;
     background-position: -100% 0;
 }
 .blackTowhite{
     background-size: 200% 100%;
     background-image: linear-gradient(to left, black 50%, white 50%);
-    transition: 400ms;
+    transition: 500ms;
     background-position: 0 0;
 }
 .slide{
@@ -33,16 +33,11 @@
     border-radius: 50px;
     cursor: pointer;
     background-color: black;
-    border: 1px solid black;
     overflow: hidden;
-    transition: ease-in-out 50ms;
+    transition: ease-in-out 150ms;
 }
-.check-white{
-    position: relative;
-    background-color: transparent;
-   }
 
-.check-b:checked ~ .slide .check-black{
+.check-b:checked ~ .check-black{
     background-color: white;
 }
 
@@ -55,84 +50,37 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    transition: 0.4s;
+    transition:0.5s, background-color 0.2s ease,
+    transform 0.5s cubic-bezier(0.65,1.6,.03,.75);
+    transition-delay: 0.2s;
 }
-.check-white::before{
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: -205px;
-    background-color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    transition: 0.4s;
-}
-.check-b:checked ~ .slide .check-black::before{
+
+.check-b:checked ~ .check-black::before{
     transform:translateX(150px);
     background-color: black;
 
    }
-.check-b:checked ~ .slide .check-white::before{
-  /*  transform:translateX(140px);
-    transition-delay: 0.1s;
-    background-color: black;*/
-    animation-name: slide-white;
-    animation-duration: 0.4s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-    animation-delay: 0.1s;
-}
+
 .check-black::after{
     content: '';
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: red;
+    background-color: white;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     transition: 0.4s;
-    transform: translateX(150px);
+    transform: translateX(-70px);
 }
-/*.check-b:checked ~ .slide .check-black::after{
-    animation-name: slide-black;
-    animation-duration: 0.4s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-    animation-delay: 0.1s;
-}*/
+.check-b:checked ~ .check-black::after{
+    background-color: black;
+    transform: translateX(80px);
+    transition: background-color 0.2s ease,
+    transform 0.4s cubic-bezier(0.65,1.6,.03,.75);
+    transition-delay: 0.3s;
+}
 
-@keyframes slide-white {
-    0%{
-        background-color: black;
-       left: -180px;
-    }
-    70%{
-        background-color: black;
-        left: -60px;
-    }
-    80%{
-        background-color: black;
-        left: -80px;
-    }
-    100%{
-        background-color: black;
-        left: -60px;
-    }
-}
-/*
-@keyframes slide-black {
-    0%{
-        left: 0px;
-    }
-    70%{
-        left: -140px;
-    }
-    80%{
-        left: -120px;
-    }
-    100%{
-        left: -140px;
-    }
-}*/
+
+
+
