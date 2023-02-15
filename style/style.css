@@ -1,9 +1,12 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
 .container{
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .whiteToblack{
     background-size: 200% 100%;
